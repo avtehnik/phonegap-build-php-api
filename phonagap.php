@@ -10,8 +10,6 @@
 
 class PhoneagpApi {
 
-    private $username;
-    private $password;
     private $ch;
 
     public function __construct($name, $password) {
