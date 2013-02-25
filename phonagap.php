@@ -15,10 +15,8 @@ class PhoneagpApi {
     private $ch;
 
     public function __construct($name, $password) {
-        $this->username = $name;
-        $this->password = $password;
         $this->ch = curl_init();
-        curl_setopt($this->ch, CURLOPT_USERPWD, "$this->username:$this->password");
+        curl_setopt($this->ch, CURLOPT_USERPWD, "$name:$password");
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
     }
