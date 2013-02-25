@@ -21,9 +21,7 @@ class PhoneagpApi {
         curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
     }
 
- 
-
-    private function getApps() {
+    public function getApps() {
         $url = "https://build.phonegap.com/api/v1/apps";
         curl_setopt($this->ch, CURLOPT_URL, $url);
         $output = curl_exec($this->ch);
