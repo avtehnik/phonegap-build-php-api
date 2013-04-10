@@ -6,8 +6,6 @@
  *   License: GPL
  *  
  */
-
-
 class PhoneagpApi {
 
     private $ch;
@@ -48,7 +46,6 @@ class PhoneagpApi {
         }
     }
 
-
     public function checkApp($id) {
         $app = $this->getApp($id);
         if ($app) {
@@ -73,7 +70,9 @@ class PhoneagpApi {
     public function getDownloadLink($id, $platform) {
         $app = $this->getApp($id);
         if ($app->status->{$platform} == 'complete') {
-            $data = file_get_contents("https://build.phonegap.com" . $app->download->{$platform});
+            $url = "https://build.phonegap.com" . $app->download->{$platform};
+            curl_setopt($this->ch, CURLOPT_URL, $url);
+            $data = curl_exec($this->ch);
             if (is_object($data) && isset($data->location)) {
                 return $data->location;
             } else {
